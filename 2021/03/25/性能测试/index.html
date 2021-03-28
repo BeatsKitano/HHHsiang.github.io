@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="H.H. Hsiang">
+
+
+    <meta name="subtitle" content="只写点技术积累">
+
+
+    <meta name="description" content="H.H blog">
+
+
+    <meta name="keywords" content="key">
+
+
+<title>性能测试 | H.H. Hsiang</title>
+
+
+
+    <link rel="icon" href="/HHHsiang/HHHsiang.github.io/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/HHHsiang/HHHsiang.github.io/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/HHHsiang/HHHsiang.github.io/js/script.js"></script>
+    
+    <script src="/HHHsiang/HHHsiang.github.io/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/HHHsiang/HHHsiang.github.io/">H.H&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/HHHsiang/HHHsiang.github.io/archives">文章</a>
+                
+                    <a class="menu-item" href="/HHHsiang/HHHsiang.github.io/category">分类</a>
+                
+                    <a class="menu-item" href="/HHHsiang/HHHsiang.github.io/tag">标签</a>
+                
+                    <a class="menu-item" href="/HHHsiang/HHHsiang.github.io/about">我</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/HHHsiang/HHHsiang.github.io/">H.H&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/HHHsiang/HHHsiang.github.io/archives">文章</a>
+                
+                    <a class="menu-item" href="/HHHsiang/HHHsiang.github.io/category">分类</a>
+                
+                    <a class="menu-item" href="/HHHsiang/HHHsiang.github.io/tag">标签</a>
+                
+                    <a class="menu-item" href="/HHHsiang/HHHsiang.github.io/about">我</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">性能测试</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">H.H. Hsiang</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 25, 2021&nbsp;&nbsp;23:53:01</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/HHHsiang/HHHsiang.github.io/categories/system/">system</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="1-Linux系统"><a href="#1-Linux系统" class="headerlink" title="1 Linux系统"></a>1 Linux系统</h2><p>Perf 是 Linux 下最普遍使用的性能分析工具，功能强大全面，俗称性能测试的“瑞士军刀”。<br>比如，Perf 可以对程序进行函数级别的采样，从而了解程序的性能瓶颈究竟在哪里。<br>或者计算每个时钟周期内的指令数等等。</p>
+<h2 id="2-MySQL"><a href="#2-MySQL" class="headerlink" title="2 MySQL"></a>2 MySQL</h2><p>SysBench 是一个容易使用的的开源多线程测试工具，主要用于测试数据库性能，<br>比如 MySQL， Oracle 和 PostgreSQL，但也可以测试 CPU，内存，文件系统等性能。<br>它的强项包括数据分析和展示模块，多线程并发性比较好，而且开销低。另外我们可以很容易地定制脚本，来创建新的测试。</p>
+<p>先安装,CentOS上</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -s https://packagecloud.io/install/repositories/akopytov/sysbench/script.rpm.sh | sudo bash</span><br><span class="line">sudo yum -y install sysbench</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-1-单表10万行数据测试"><a href="#2-1-单表10万行数据测试" class="headerlink" title="2.1 单表10万行数据测试"></a>2.1 单表10万行数据测试</h3><p>首先新建一个数据库foo，这个库来对mysql压力测试</p>
+<h4 id="2-1-1-准备数据：建单表50w行数据的表4张"><a href="#2-1-1-准备数据：建单表50w行数据的表4张" class="headerlink" title="2.1.1 准备数据：建单表50w行数据的表4张"></a>2.1.1 准备数据：建单表50w行数据的表4张</h4><p>执行以下命令，此时数据库foo中会新增一张表，表中10w行数据。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysbench /usr/share/sysbench/oltp_read_write.lua --threads=4 --db-driver=mysql --table_size=500000 --tables=4 --mysql-host=localhost --mysql-port=3306 --mysql-socket=/tmp/mysql.sock  --mysql-db=foo --mysql-user=foo --mysql-password=W6thwRJWZPmfZcyL prepare</span><br></pre></td></tr></table></figure>
+<h4 id="2-1-2-指定线程数量进行read-write混合测试"><a href="#2-1-2-指定线程数量进行read-write混合测试" class="headerlink" title="2.1.2 指定线程数量进行read write混合测试"></a>2.1.2 指定线程数量进行read write混合测试</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysbench /usr/share/sysbench/oltp_read_write.lua --threads=8 --db-driver=mysql --table_size=500000 --tables=4 --mysql-host=localhost --mysql-port=3306 --mysql-socket=/tmp/mysql.sock  --mysql-db=foo --mysql-user=foo --mysql-password=W6thwRJWZPmfZcyL run</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-1-3-清除数据"><a href="#2-1-3-清除数据" class="headerlink" title="2.1.3 清除数据"></a>2.1.3 清除数据</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysbench /usr/share/sysbench/oltp_read_write.lua --threads=4 --db-driver=mysql --table_size=500000 --tables=4 --mysql-host=localhost --mysql-port=3306 --mysql-socket=/tmp/mysql.sock  --mysql-db=foo --mysql-user=foo --mysql-password=W6thwRJWZPmfZcyL cleanup</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-网络测试场景"><a href="#3-网络测试场景" class="headerlink" title="3 网络测试场景"></a>3 网络测试场景</h2><p>Iperf 可以测试最大 TCP 和 UDP 带宽性能，具有多种参数和 UDP 特性，<br>可以根据需要调整，可以报告带宽、延迟抖动和数据包丢失。这个工具使用起来很简单，<br>一条命令行就可以。比如如下的测试：“采用 UDP 协议，以 100Mbps 的数据发送速率，<br>从本机到服务器 192.168.1.1 作上传带宽测试；测试时间为 120 秒”，<br>或者“以 50Mbps 的发送速率，同时向服务器端发起 100 个连接线程”。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>H.H. Hsiang</span>
+                    </p>
+                
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/HHHsiang/HHHsiang.github.io/tags/system/"># system</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/HHHsiang/HHHsiang.github.io/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/HHHsiang/HHHsiang.github.io/2021/03/24/Grafana%E4%B8%8EPrometheus%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%9B%91%E6%8E%A7/">Grafana与Prometheus的服务监控</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span style="color: #4271ae">
+            © H.H. Hsiang  |  <a style="color: #4271ae" href="mailto:xorshine@icloud.com" target="_top">Email:xorshine@icloud.com</a>
+        </span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
