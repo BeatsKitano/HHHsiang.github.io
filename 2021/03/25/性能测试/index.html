@@ -199,9 +199,33 @@
                             
                         </span>
                     
+
+                    
+                        Tag:
+                        
+                            <a href="/tags/system/">system</a>
+                        
+                    
+
+                    
+                        <section>
+                            
+                            
+                                <p class="copyright-item">
+                                    <span>License:</span>
+                                    <span>Copyright@2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a></span>
+                                </p>
+                            
+                            
+
+                        </section>
+                    
+
                 </div>
             
+
         </header>
+
 
         <div class="post-content">
             <h2 id="1-Linux系统"><a href="#1-Linux系统" class="headerlink" title="1 Linux系统"></a>1 Linux系统</h2><p>Perf 是 Linux 下最普遍使用的性能分析工具，功能强大全面，俗称性能测试的“瑞士军刀”。<br>比如，Perf 可以对程序进行函数级别的采样，从而了解程序的性能瓶颈究竟在哪里。<br>或者计算每个时钟周期内的指令数等等。</p>
@@ -220,51 +244,79 @@
 
         </div>
 
-        
-            <section class="post-copyright">
-                
-                    <p class="copyright-item">
-                        <span>Author:</span>
-                        <span>H. H. Hsiang</span>
-                    </p>
-                
-                
-                
-                    <p class="copyright-item">
-                        <span>License:</span>
-                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
-                    </p>
-                
-                
-
-            </section>
-        
         <section class="post-tags">
             <div>
-                <span>Tag(s):</span>
-                <span class="tag">
-                    
-                    
-                        <a href="/tags/system/"># system</a>
-                    
-                        
-                </span>
-            </div>
-            <div>
-                <a href="javascript:window.history.back();">back</a>
+                <a href="javascript:window.history.back();">返回</a>
                 <span>· </span>
-                <a href="/">home</a>
+                <a href="/">主页</a>
             </div>
         </section>
         <section class="post-nav">
             
             
-            <a class="next" rel="next" href="/2021/03/24/Grafana%E4%B8%8EPrometheus%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%9B%91%E6%8E%A7/">Grafana与Prometheus的服务监控</a>
+                <a class="next" rel="next" href="/2021/03/24/Grafana%E4%B8%8EPrometheus%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%9B%91%E6%8E%A7/">Grafana与Prometheus的服务监控</a>
             
         </section>
 
 
+        <div class="post-content">
+            
+                <section id="comments" class="comments">
+                    <style>
+                        .comments {
+                            margin: 30px;
+                            padding: 10px;
+                            background: #fff
+                        }
+
+                        @media screen and (max-width: 800px) {
+                            .comments {
+                                margin: auto;
+                                padding: 10px;
+                                background: #fff
+                            }
+                        }
+                    </style>
+                    <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'SwbtChYRKCqDg2isS7I13K0o-gzGzoHsz',
+      app_key: 'JirIW8LqGNy1L0R76Wp94CiD',
+      placeholder: '如有必要请留言或者邮件',
+      notify: 'true',
+      verify: 'true',
+    });
+
+    function addCount(Counter) {
+            var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'icafebolger.com';
+            var Counter = Valine.Object.extend("Counter");
+            var query = new Counter;
+            query.save({
+                words: url
+            }).then(function (object) {
+            })
+        }
+        $(function () {
+            var Counter = Valine.Object.extend("Counter");
+            addCount(Counter);
+        });
+</script>
+
+
+                </section>
+            
+        </div>
+
+
     </article>
+
+
 </div>
 
         </div>

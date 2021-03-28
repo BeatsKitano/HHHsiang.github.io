@@ -199,9 +199,33 @@
                             
                         </span>
                     
+
+                    
+                        Tag:
+                        
+                            <a href="/tags/system/">system</a>
+                        
+                    
+
+                    
+                        <section>
+                            
+                            
+                                <p class="copyright-item">
+                                    <span>License:</span>
+                                    <span>Copyright@2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a></span>
+                                </p>
+                            
+                            
+
+                        </section>
+                    
+
                 </div>
             
+
         </header>
+
 
         <div class="post-content">
             <h3 id="Grafana使用Nginx反向代理需要注意的"><a href="#Grafana使用Nginx反向代理需要注意的" class="headerlink" title="Grafana使用Nginx反向代理需要注意的"></a>Grafana使用Nginx反向代理需要注意的</h3><ul>
@@ -220,40 +244,11 @@
 
         </div>
 
-        
-            <section class="post-copyright">
-                
-                    <p class="copyright-item">
-                        <span>Author:</span>
-                        <span>H. H. Hsiang</span>
-                    </p>
-                
-                
-                
-                    <p class="copyright-item">
-                        <span>License:</span>
-                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
-                    </p>
-                
-                
-
-            </section>
-        
         <section class="post-tags">
             <div>
-                <span>Tag(s):</span>
-                <span class="tag">
-                    
-                    
-                        <a href="/tags/system/"># system</a>
-                    
-                        
-                </span>
-            </div>
-            <div>
-                <a href="javascript:window.history.back();">back</a>
+                <a href="javascript:window.history.back();">返回</a>
                 <span>· </span>
-                <a href="/">home</a>
+                <a href="/">主页</a>
             </div>
         </section>
         <section class="post-nav">
@@ -264,7 +259,64 @@
         </section>
 
 
+        <div class="post-content">
+            
+                <section id="comments" class="comments">
+                    <style>
+                        .comments {
+                            margin: 30px;
+                            padding: 10px;
+                            background: #fff
+                        }
+
+                        @media screen and (max-width: 800px) {
+                            .comments {
+                                margin: auto;
+                                padding: 10px;
+                                background: #fff
+                            }
+                        }
+                    </style>
+                    <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'SwbtChYRKCqDg2isS7I13K0o-gzGzoHsz',
+      app_key: 'JirIW8LqGNy1L0R76Wp94CiD',
+      placeholder: '如有必要请留言或者邮件',
+      notify: 'true',
+      verify: 'true',
+    });
+
+    function addCount(Counter) {
+            var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'icafebolger.com';
+            var Counter = Valine.Object.extend("Counter");
+            var query = new Counter;
+            query.save({
+                words: url
+            }).then(function (object) {
+            })
+        }
+        $(function () {
+            var Counter = Valine.Object.extend("Counter");
+            addCount(Counter);
+        });
+</script>
+
+
+                </section>
+            
+        </div>
+
+
     </article>
+
+
 </div>
 
         </div>
